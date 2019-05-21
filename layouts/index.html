@@ -14,6 +14,16 @@
 {{ range (.Scratch.Get "paginator").Pages }}
 <article>
   {{ partial "heading.html" . }}
+  {{ with .Resources.ByType "image" }}
+    <div class="thumbnails">
+        {{ range . }}
+            {{ $thumbnail := .Fit "300x200" }}
+            <div class='Gallery__item'>
+                <a href="{{ .RelPermalink }}"><img src="{{ $thumbnail.RelPermalink }}" /></a>
+            </div>
+        {{ end }}
+    </div>
+  {{ end }}
   {{ .Content }}
   {{ partial "tags.html" . }}
 </article>

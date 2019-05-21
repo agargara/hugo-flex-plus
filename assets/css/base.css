@@ -1,5 +1,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background: {{ site.Params.background }};
+  color: {{ site.Params.color }};
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -27,6 +29,14 @@ code {
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
+a {
+    color: {{ site.Params.link_color }};
+}
+
+a:hover {
+    color: {{ site.Params.link_hover_color }};
+}
+
 .Banner {
   list-style: none;
   display: flex;
@@ -34,10 +44,19 @@ code {
   justify-content: space-between;
   margin: 0;
   padding: 0;
+  color: {{ site.Params.header_color }};
 }
 
 {{ $len := len site.Menus.nav }}
 {{ range seq $len }}
+
+.Banner-item:hover{
+    background: {{ site.Params.link_hover_background }};
+}
+
+.Banner-item:hover a{
+    color: {{ site.Params.link_hover_color }};
+}
 
 .Banner-item:nth-child({{ . }}) {
   order: {{ . | sub $len | add 1 }};
@@ -51,7 +70,6 @@ code {
 
 .Banner-link {
   font-size: 1.25rem;
-  color: white;
   padding: 0.5rem 1rem;
 }
 
@@ -86,7 +104,6 @@ code {
 }
 
 .Tags-link {
-  color: white;
 }
 
 .Pagination {
@@ -113,7 +130,7 @@ code {
 }
 
 .u-background {
-  background: {{ site.Params.color }};
+  background: {{ site.Params.header_background }};
 }
 
 .u-clickable {
