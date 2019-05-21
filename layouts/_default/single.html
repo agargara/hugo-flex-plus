@@ -2,15 +2,6 @@
 
 <article>
   {{ partial "heading.html" . }}
-  {{ with .Resources.ByType "image" }}
-    <div class="Gallery">
-        {{ range . }}
-            <div class='Gallery__item'>
-                <img src="{{ .RelPermalink }}" />
-            </div>
-        {{ end }}
-    </div>
-  {{ end }}
   {{ .Content }}
   {{ partial "tags.html" . }}
 </article>
